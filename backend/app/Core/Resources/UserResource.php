@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Core\Resources;
+namespace Core\Resources;
 
-use App\Core\Models\User;
-use App\Ship\ApiResource;
+use Core\Models\User;
 use Illuminate\Http\Request;
+use Ship\Resource\ApiResource;
 
 /** @mixin User */
 class UserResource extends ApiResource

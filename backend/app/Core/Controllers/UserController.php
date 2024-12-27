@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Core\Controllers;
+namespace Core\Controllers;
 
-use App\Core\Exceptions\User\UserNotFoundException;
-use App\Core\Models\User;
-use App\Core\Resources\UserResource;
-use App\Core\Tasks\User\FindUserByIdTask;
-use App\Core\UseCases\User\Delete\DeleteUserCommandHandler;
-use App\Core\UseCases\User\Store\StoreUserCommand;
-use App\Core\UseCases\User\Store\StoreUserCommandHandler;
-use App\Core\UseCases\User\Store\StoreUserRequest;
-use App\Core\UseCases\User\Update\UpdateUserCommand;
-use App\Core\UseCases\User\Update\UpdateUserCommandHandler;
-use App\Core\UseCases\User\Update\UpdateUserRequest;
-use App\Ship\Abstractions\Controllers\Controller;
-use App\Ship\ApiResource;
+use Core\Exceptions\User\UserNotFoundException;
+use Core\Models\User;
+use Core\Resources\UserResource;
+use Core\Tasks\User\FindUserByIdTask;
+use Core\UseCases\User\Delete\DeleteUserCommandHandler;
+use Core\UseCases\User\Store\StoreUserCommand;
+use Core\UseCases\User\Store\StoreUserCommandHandler;
+use Core\UseCases\User\Store\StoreUserRequest;
+use Core\UseCases\User\Update\UpdateUserCommand;
+use Core\UseCases\User\Update\UpdateUserCommandHandler;
+use Core\UseCases\User\Update\UpdateUserRequest;
 use Illuminate\Http\JsonResponse;
+use Ship\Abstractions\Controllers\Controller;
+use Ship\Resource\ApiResource;
 
 final class UserController extends Controller
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core\Repositories;
+namespace Core\Repositories;
 
-use App\Core\Models\User;
+use Core\Models\User;
 
 interface UserRepositoryInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Core\Tasks\User;
+namespace Core\Tasks\User;
 
-use App\Core\Exceptions\User\UserNotFoundException;
-use App\Core\Models\User;
-use App\Core\Repositories\UserRepositoryInterface;
+use Core\Exceptions\User\UserNotFoundException;
+use Core\Models\User;
+use Core\Repositories\UserRepositoryInterface;
 
 final readonly class FindUserByIdTask
 {

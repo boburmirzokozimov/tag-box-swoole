@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\UseCases\User\Update;
+namespace Core\UseCases\User\Update;
 
 use Illuminate\Foundation\Http\FormRequest;
 

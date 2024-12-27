@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Core\UseCases\User\Store;
+namespace Core\UseCases\User\Store;
 
-use App\Core\Models\User;
-use App\Core\Repositories\UserRepositoryInterface;
+use Core\Models\User;
+use Core\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
 
 readonly class StoreUserCommandHandler

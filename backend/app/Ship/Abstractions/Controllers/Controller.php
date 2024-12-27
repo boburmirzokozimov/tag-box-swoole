@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Abstractions\Controllers;
+namespace Ship\Abstractions\Controllers;
 
 abstract class Controller
 {

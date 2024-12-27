@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Core\UseCases\User\Delete;
+namespace Core\UseCases\User\Delete;
 
-use App\Core\Exceptions\User\UserNotFoundException;
-use App\Core\Repositories\UserRepositoryInterface;
-use App\Core\Tasks\User\FindUserByIdTask;
+use Core\Exceptions\User\UserNotFoundException;
+use Core\Repositories\UserRepositoryInterface;
+use Core\Tasks\User\FindUserByIdTask;
 
 final readonly class DeleteUserCommandHandler
 {

@@ -1,7 +1,7 @@
 <?php
 
-use App\Core\Providers\CoreServiceProvider;
-use App\Ship\Providers\RouteServiceProvider;
+use Core\Providers\CoreServiceProvider;
+use Ship\Providers\RouteServiceProvider;
 
 return [
     RouteServiceProvider::class,

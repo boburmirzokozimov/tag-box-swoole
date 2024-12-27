@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Core\UseCases\User\Update;
+namespace Core\UseCases\User\Update;
 
-use App\Core\Exceptions\User\UserNotFoundException;
-use App\Core\Models\User;
-use App\Core\Repositories\UserRepositoryInterface;
-use App\Core\Tasks\User\FindUserByIdTask;
+use Core\Exceptions\User\UserNotFoundException;
+use Core\Models\User;
+use Core\Repositories\UserRepositoryInterface;
+use Core\Tasks\User\FindUserByIdTask;
 
 final readonly class UpdateUserCommandHandler
 {

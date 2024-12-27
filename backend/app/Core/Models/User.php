@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Models;
+namespace Core\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;

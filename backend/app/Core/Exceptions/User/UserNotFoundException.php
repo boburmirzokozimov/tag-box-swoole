@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core\Exceptions\User;
+namespace Core\Exceptions\User;
 
-use App\Ship\Exceptions\BaseException;
+use Ship\Exceptions\BaseException;
 use Throwable;
 
 class UserNotFoundException extends BaseException
