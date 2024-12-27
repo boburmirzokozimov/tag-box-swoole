@@ -1,0 +1,61 @@
+services:
+  tag-box-nginx:
+    build:
+      context: backend/docker/nginx
+    volumes:
+      - ./backend:/app
+      - ./backend/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8081:80"
+    depends_on:
+      - tag-box-swoole
+      - tag-box-db
+    networks:
+      - tag-box-network
+    restart: always # Automatically restart the container if it stops
+
+  tag-box-swoole:
+    build:
+      context: backend/docker/php-swoole
+    volumes:
+      - ./backend:/app
+    networks:
+      - tag-box-network
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - tag-box-db
+    environment:
+      SHELL: /bin/bash
+      OCTANE_SERVER: swoole
+      OCTANE_WORKERS: auto
+      OCTANE_HTTPS: false
+      OCTANE_HOT_RELOAD: true
+
+  tag-box-db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+      MYSQL_DATABASE: tag-box
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - tag-box-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  tag-box-network:
+    driver: bridge
+
+volumes:
+  db:
