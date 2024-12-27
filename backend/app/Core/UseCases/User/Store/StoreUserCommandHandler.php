@@ -1,9 +1,9 @@
 <?php
 
-namespace App\UseCases\User;
+namespace App\Core\UseCases\User\Store;
 
-use App\Models\User;
-use App\Repositories\UserRepositoryInterface;
+use App\Core\Models\User;
+use App\Core\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
 
 readonly class StoreUserCommandHandler
@@ -14,10 +14,11 @@ readonly class StoreUserCommandHandler
 
     public function handle(StoreUserCommand $command): User
     {
-        $user = new User();
-        $user->name = $command->getName();
-        $user->email = $command->getEmail();
-        $user->password = Hash::make($command->getName());
+        $user = User::new(
+            $command->getName(),
+            $command->getEmail(),
+            Hash::make($command->getName())
+        );
 
         return $this->repository->save($user);
     }

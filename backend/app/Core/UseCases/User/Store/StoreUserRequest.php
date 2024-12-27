@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Core\UseCases\User\Store;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Core\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
@@ -66,6 +66,27 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public static function new(string $name, string $email, string $password): self
+    {
+        $user = new User();
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = $password;
+        return $user;
+    }
+
+    public function changePassword(string $password): User
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function changEmail(string $email): User
+    {
+        $this->email = $email;
+        return $this;
+    }
 
     /**
      * Get the attributes that should be cast.

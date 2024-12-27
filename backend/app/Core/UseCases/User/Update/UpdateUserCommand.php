@@ -1,14 +1,13 @@
 <?php
 
-namespace App\UseCases\User;
+namespace App\Core\UseCases\User\Update;
 
-class StoreUserCommand
+final readonly class UpdateUserCommand
 {
-    private function __construct(
-        private readonly string $name,
-        private readonly string $email,
-        private readonly string $password,
-    )
+    public function __construct(
+        private string $name,
+        private string $email,
+        private string $password)
     {
     }
 
@@ -17,7 +16,7 @@ class StoreUserCommand
         return new self(
             name: $data['name'],
             email: $data['email'],
-            password: $data['password'],
+            password: $data['password']
         );
     }
 
@@ -35,5 +34,6 @@ class StoreUserCommand
     {
         return $this->password;
     }
+
 
 }

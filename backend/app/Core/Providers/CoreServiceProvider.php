@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Providers;
+namespace App\Core\Providers;
 
-use App\Repositories\UserRepository;
-use App\Repositories\UserRepositoryInterface;
+use App\Core\Repositories\UserRepository;
+use App\Core\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class CoreServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
