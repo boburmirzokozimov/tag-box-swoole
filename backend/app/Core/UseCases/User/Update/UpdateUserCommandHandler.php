@@ -4,7 +4,7 @@ namespace Core\UseCases\User\Update;
 
 use Core\Exceptions\User\UserNotFoundException;
 use Core\Models\User;
-use Core\Repositories\UserRepositoryInterface;
+use Core\Repositories\User\UserRepositoryInterface;
 use Core\Tasks\User\FindUserByIdTask;
 
 final readonly class UpdateUserCommandHandler

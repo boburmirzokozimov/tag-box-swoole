@@ -2,8 +2,8 @@
 
 namespace Core\Providers;
 
-use Core\Repositories\UserRepository;
-use Core\Repositories\UserRepositoryInterface;
+use Core\Repositories\User\UserRepository;
+use Core\Repositories\User\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class CoreServiceProvider extends ServiceProvider

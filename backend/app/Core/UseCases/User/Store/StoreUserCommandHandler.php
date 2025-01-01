@@ -3,7 +3,7 @@
 namespace Core\UseCases\User\Store;
 
 use Core\Models\User;
-use Core\Repositories\UserRepositoryInterface;
+use Core\Repositories\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
 
 readonly class StoreUserCommandHandler

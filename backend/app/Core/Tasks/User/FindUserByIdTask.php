@@ -4,7 +4,7 @@ namespace Core\Tasks\User;
 
 use Core\Exceptions\User\UserNotFoundException;
 use Core\Models\User;
-use Core\Repositories\UserRepositoryInterface;
+use Core\Repositories\User\UserRepositoryInterface;
 
 final readonly class FindUserByIdTask
 {
