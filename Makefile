@@ -9,6 +9,7 @@ down: docker-down
 restart: down up
 artisan: php-artisan
 fix: cs-fix test analyze
+build: docker-build
 
 docker-up:
 	docker compose up -d

@@ -53,9 +53,72 @@ services:
       timeout: 5s
       retries: 3
 
+  elasticsearch:
+    image: elasticsearch:7.16.1
+    volumes:
+      - ./configs/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./docker_volumes/elasticsearch/data:/usr/share/elasticsearch/data
+    environment:
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+      ELASTIC_USERNAME: "elastic"
+      ELASTIC_PASSWORD: "MyPw123"
+      discovery.type: single-node
+    networks:
+      - tag-box-network
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  logstash:
+    image: logstash:8.17.0
+    volumes:
+      - ./configs/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./configs/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
+      - ./configs/logstash/pipelines:/usr/share/logstash/config/pipelines:ro
+    environment:
+      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+    ports:
+      - "5044:5044"
+      - "5000:5000"
+      - "9600:9600"
+    networks:
+      - tag-box-network
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:7.16.1
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
+    networks:
+      - tag-box-network
+    ports:
+      - "5601:5601"
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.9.1
+    user: root
+    entrypoint: filebeat -e -strict.perms=false
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro # Docker logs
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Access to Docker API
+      - ./backend:/app
+      - ./configs/filebeat/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
+    networks:
+      - tag-box-network
+    depends_on:
+      - logstash
+
+
 networks:
   tag-box-network:
     driver: bridge
 
 volumes:
   db:
+  test_data:
+  ls_data:
+  kb_data:
+

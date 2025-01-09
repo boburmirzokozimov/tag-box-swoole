@@ -14,6 +14,7 @@ use Core\UseCases\User\Update\UpdateUserCommand;
 use Core\UseCases\User\Update\UpdateUserCommandHandler;
 use Core\UseCases\User\Update\UpdateUserRequest;
 use Illuminate\Http\JsonResponse;
+use Log;
 use Ship\Abstractions\Controllers\Controller;
 use Ship\Resource\ApiResource;
 
@@ -22,6 +23,7 @@ final class UserController extends Controller
     public function index(): ApiResource
     {
         $users = User::all(['id', 'name', 'email']);
+        Log::debug($users);
 
         return new ApiResource(UserResource::collection($users));
     }

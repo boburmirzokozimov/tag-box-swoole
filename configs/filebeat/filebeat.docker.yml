@@ -1,0 +1,18 @@
+filebeat.inputs:
+  - type: container
+    # путь к лог-файлам контейнеров
+    paths:
+      - '/var/lib/docker/containers/*/*.log'
+
+output.logstash:
+  hosts: [ "logstash:5044" ]
+
+#filebeat.inputs:
+#  - type: log
+#    # путь к лог-файлам контейнеров
+#    paths:
+#      - '/app/storage/logs/daily/*.log'
+#
+#
+#output.logstash:
+#  hosts: [ "logstash:5044" ]
