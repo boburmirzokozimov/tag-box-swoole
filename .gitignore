@@ -2,3 +2,4 @@
 docker_volumes
 ./docker_volumes
 ./logs
+logs
