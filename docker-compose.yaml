@@ -121,7 +121,4 @@ networks:
 
 volumes:
   db:
-  test_data:
-  ls_data:
-  kb_data:
 
