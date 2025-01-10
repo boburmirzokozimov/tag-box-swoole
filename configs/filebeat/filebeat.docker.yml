@@ -4,6 +4,15 @@ filebeat.inputs:
     paths:
       - '/var/lib/docker/containers/*/*.log'
 
+  - type: log
+    paths:
+      - "/logs/mysql/slow.log"  # ✅ Corrected path (relative to Filebeat container)
+    fields:
+      log_type: mysql_slow
+    multiline.pattern: '^\# Time: '
+    multiline.negate: true
+    multiline.match: after
+
 output.logstash:
   hosts: [ "logstash:5044" ]
 

@@ -43,6 +43,8 @@ services:
       MYSQL_DATABASE: tag-box
     volumes:
       - db:/var/lib/mysql
+      - ./logs/mysql/slow.log:/var/lib/mysql/slow.log
+      - ./configs/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro  # ✅ Use custom config
     ports:
       - "33060:3306"
     networks:
@@ -105,6 +107,7 @@ services:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro # Docker logs
       - /var/run/docker.sock:/var/run/docker.sock:ro # Access to Docker API
       - ./backend:/app
+      - ./logs/mysql:/var/lib/mysql:ro
       - ./configs/filebeat/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
     networks:
       - tag-box-network
