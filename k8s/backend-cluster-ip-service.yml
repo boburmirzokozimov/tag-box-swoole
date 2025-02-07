@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: api
+  ports:
+    - port: 8000
+      targetPort: 8000
+
+# 213 231 123 321 312 132
